@@ -1,10 +1,6 @@
 spring:
   application:
     name: config-server
-  security:
-    user:
-      name: admin
-      password: admin
   cloud:
     config:
       server:
@@ -12,16 +8,18 @@ spring:
           uri: https://github.com/springMicorService/spring-cloud-config-repository
           username: 2274420416@qq.com
           password: xgj@123
+          search-paths: commonConfig
+      label: master
 server:
   port: 9001
 
 eureka:
   instance:
     prefer-ip-address: true
-    hostname: localhost
+    hostname: eureka.shop.com
     instance-id: ${spring.application.name}:${server.port}
   client:
     service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:8001/eureka/
+      defaultZone: http://admin:admin@${eureka.instance.hostname}:8001/eureka/
 
 
