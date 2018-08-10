@@ -6,7 +6,7 @@
     <groupId>com.xaven.shop</groupId>
     <artifactId>shop_h5</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>shop_h5</name>
     <description>Demo project for Spring Boot</description>
@@ -26,6 +26,12 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.xaven.shop</groupId>
+            <artifactId>shop_api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
