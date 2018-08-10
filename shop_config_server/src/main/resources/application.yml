@@ -6,8 +6,8 @@ spring:
       server:
         git:
           uri: https://github.com/springMicorService/spring-cloud-config-repository
-          username: 2274420416@qq.com
-          password: xgj@123
+          username: ******
+          password: ******
           search-paths: commonConfig
       label: master
 server:
