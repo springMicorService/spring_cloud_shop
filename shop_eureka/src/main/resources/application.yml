@@ -9,10 +9,14 @@ server:
   port: 8001
 eureka:
   instance:
-    hostname: localhost
-    appname: eureka1
+    hostname: eureka.shop.com
+    appname: eureka
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: false #关闭自我保护
+
+
