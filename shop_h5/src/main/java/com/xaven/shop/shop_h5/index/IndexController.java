@@ -13,7 +13,6 @@
 
 package com.xaven.shop.shop_h5.index;
 
-import com.xaven.shop.shop_h5.config.Config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,8 +29,8 @@ public class IndexController {
 
     @RequestMapping("/index")
     public String index(Model model){
-        System.out.println(new Config().toString()+"------"+userName);
-        model.addAttribute("user",new Config());
+        model.addAttribute("user",userName);
+
         model.addAttribute("name","tom");
         return "index";
     }
