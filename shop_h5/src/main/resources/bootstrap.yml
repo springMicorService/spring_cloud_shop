@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: shop_h5
+  security:
+    user:
+      name: admin
+      password: admin
+  cloud:
+    config:
+     # uri:  http://localhost:9001/
+      name: ${spring.application.name}
+      label: master
+      discovery:
+        enabled: true
+        service-id: config-server
+
+  freemarker:
+    allow-request-override: false
+    cache: true
+    check-template-location: true
+    charset: UTF-8
+    content-type: text/html
+    expose-request-attributes: false
+    expose-session-attributes: false
+    expose-spring-macro-helpers: false
+server:
+  port: 8080
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: eureka.shop.com
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:8001/eureka/
+
+
