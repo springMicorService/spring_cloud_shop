@@ -13,5 +13,26 @@
 
 package com.xaven.shop.shop_h5.order.callback;
 
-public class OrderCallBack {
+import com.xaven.shop.order.entity.Order;
+import com.xaven.shop.shop_h5.order.service.OrderFeignService;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Component
+@RequestMapping("/callback")
+public class OrderCallBack implements OrderFeignService {
+    @Override
+    public String helloService(String name) {
+        return "get error:"+name;
+    }
+
+    @Override
+    public String helloService(String name, String password) {
+        return "head error";
+    }
+
+    @Override
+    public String helloService(Order order) {
+        return "post error";
+    }
 }

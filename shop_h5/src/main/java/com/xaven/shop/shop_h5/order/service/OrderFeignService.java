@@ -14,10 +14,11 @@
 package com.xaven.shop.shop_h5.order.service;
 
 import com.xaven.shop.order.api.OrderService;
+import com.xaven.shop.shop_h5.order.callback.OrderCallBack;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 
 @Component
-@FeignClient(name="shop-order")
-public interface OrderFrginService extends OrderService {
+@FeignClient(name="shop-order",fallback=OrderCallBack.class)
+public interface OrderFeignService extends OrderService {
 }

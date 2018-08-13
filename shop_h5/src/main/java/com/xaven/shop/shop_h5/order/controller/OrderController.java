@@ -15,7 +15,7 @@ package com.xaven.shop.shop_h5.order.controller;
 
 
 import com.xaven.shop.order.entity.Order;
-import com.xaven.shop.shop_h5.order.service.OrderFrginService;
+import com.xaven.shop.shop_h5.order.service.OrderFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class OrderController {
     @Autowired
-    OrderFrginService orderFrginService;
+    OrderFeignService orderFeignService;
 
     @RequestMapping("/orderIndex")
     public String orderIndex(){
@@ -33,7 +33,7 @@ public class OrderController {
         System.out.println("----------");
       //  orderFrginService.helloService(order);
 
-        orderFrginService.helloService("123131");
+        System.out.println(orderFeignService.helloService("123131"));
 
       //  orderFrginService.helloService("name","pass");
         return "222";

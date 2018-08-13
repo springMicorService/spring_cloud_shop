@@ -35,4 +35,7 @@ eureka:
     service-url:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:8001/eureka/
 
+feign:
+  hystrix:
+    enabled: true
 
