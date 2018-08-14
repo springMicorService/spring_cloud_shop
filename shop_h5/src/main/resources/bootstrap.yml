@@ -1,6 +1,6 @@
 spring:
   application:
-    name: shop_h5
+    name: shop-h5
   security:
     user:
       name: admin
