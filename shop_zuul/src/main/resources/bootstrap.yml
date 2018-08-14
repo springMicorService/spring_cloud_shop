@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: shop-zuul
+  cloud:
+    config:
+     # uri:  http://localhost:9001/
+      name: ${spring.application.name}
+      label: master
+      discovery:
+        enabled: true
+        service-id: config-server
+
+
+server:
+  port: 11000
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: eureka.shop.com
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://admin:admin@${eureka.instance.hostname}:8001/eureka/
+zuul:
+  routes:
+    shop_h5:
+      path: /shop-h5/**
+      serviceId: shop-h5
+    shop_order:
+      path: /shoporder/**
+      serviceId: shop-order
