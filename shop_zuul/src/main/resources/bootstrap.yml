@@ -22,6 +22,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://admin:admin@${eureka.instance.hostname}:8001/eureka/
+
+#\u4EE5\u4E0B\u8DEF\u7531\u89C4\u5219\uFF0C\u53EF\u7701\u7565\uFF0C\u9ED8\u8BA4\u63A5\u7BA1serviceId \u5BF9\u5E94\u7684path\u3002\u6709\u7279\u6B8A\u9700\u8981\u518D\u914D\u7F6E\uFF0C\u4E00\u822C\u7701\u7565
 zuul:
   routes:
     shop_h5:
