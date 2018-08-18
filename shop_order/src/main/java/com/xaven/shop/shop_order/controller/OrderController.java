@@ -22,7 +22,7 @@ import java.util.Random;
 public class OrderController implements OrderService {
 
     private void sleep(String methodName) {
-        int sleepMinTime = new Random().nextInt(3000);
+        int sleepMinTime = new Random().nextInt(300);
         try {
             Thread.sleep(sleepMinTime);
         } catch (InterruptedException e) {
