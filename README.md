@@ -23,4 +23,5 @@ springcloud系列微服务开发实践
  shop_api提供接口，shop_h5\shop_order等业务相关统一依赖shop_api。
 
     
+    test
    
