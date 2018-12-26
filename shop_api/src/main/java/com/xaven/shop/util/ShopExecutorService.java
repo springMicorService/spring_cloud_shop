@@ -36,6 +36,9 @@ public class ShopExecutorService {
 
     private ExecutorService                       boundedThreadPool;
 
+
+
+
     public static ShopExecutorService getInstance() {
         if (instance == null) {
             synchronized (ShopExecutorService.class) {
@@ -58,6 +61,13 @@ public class ShopExecutorService {
     }
 
     public static void main(String[] args) {
+
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+
+        executorService = ShopExecutorService.getInstance().boundedThreadPool;
+
+        CountDownLatch countDownLatch = new CountDownLatch(100);
+
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < 5; i++) {
             ShopExecutorService.doSomeThing();
@@ -65,23 +75,32 @@ public class ShopExecutorService {
         System.out.println("单线程耗时：" + (System.currentTimeMillis() - startTime));
 
         long startTime2 = System.currentTimeMillis();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 100; i++) {
             ShopExecutorService.getInstance().boundedThreadPool
                     .execute(new Runnable() {
+
                         @Override
                         public void run() {
                             ShopExecutorService.doSomeThing();
+                            countDownLatch.countDown();
                         }
+
                     });
         }
         ShopExecutorService.getInstance().boundedThreadPool.shutdown();
-        for (;;) {
+        /*for (;;) {
             if (ShopExecutorService.getInstance().boundedThreadPool
                     .isTerminated()) {
                 break;
             }
+        }*/
+        try {
+            countDownLatch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        System.out.println("线程池耗时：" + (System.currentTimeMillis() - startTime2));
+        System.out
+                .println("线程池耗时：" + (System.currentTimeMillis() - startTime2));
 
     }
 
@@ -90,8 +109,9 @@ public class ShopExecutorService {
      */
     private static void doSomeThing() {
         try {
-            Thread.sleep(500l);
-            System.out.println("do something...");
+            Thread.sleep(1000l);
+            System.out.println(
+                    "do something..." + Thread.currentThread().getName() +"队列大小："+ queue.size());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

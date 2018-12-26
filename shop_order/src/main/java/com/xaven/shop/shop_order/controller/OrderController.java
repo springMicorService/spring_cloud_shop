@@ -15,11 +15,15 @@ package com.xaven.shop.shop_order.controller;
 
 import com.xaven.shop.order.api.OrderService;
 import com.xaven.shop.order.entity.Order;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Random;
 @RestController
 public class OrderController implements OrderService {
+
+    @Value("${server.port}")
+    private String port;
 
     private void sleep(String methodName) {
         int sleepMinTime = new Random().nextInt(300);
@@ -35,7 +39,7 @@ public class OrderController implements OrderService {
     public String helloService(String name) {
         sleep("get");
         System.out.println(name);
-        return "HelloServiceImpl name :"+name;
+        return "HelloServiceImpl name :"+name+"端口："+port;
     }
 
     @Override
